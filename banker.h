@@ -3,6 +3,7 @@
 #define NUMBER_OF_CUSTOMERS 5
 #define NUMBER_OF_RESOURCES 4
 #define MAX_REQUESTS_FILE "./max_requests.txt"
+#define ALLOCATION_FILE "./allocation.txt"
 
 /* the available amount of each resource */
 int available[NUMBER_OF_RESOURCES];
@@ -23,6 +24,7 @@ int need_temp[NUMBER_OF_CUSTOMERS][NUMBER_OF_RESOURCES];
 
 void get_available_amount(int argc, char **argv);
 void get_maximum_requests();
+void get_initial_allocation();
 void get_amount_needed();
 void get_command();
 int request_resources(int customer_num, int request[]);

@@ -8,6 +8,7 @@
 int main (int argc, char **argv) {
     get_available_amount(argc, argv);
     get_maximum_requests();
+    get_initial_allocation();
     get_amount_needed();
     get_command();
    return 0;
@@ -40,6 +41,28 @@ void get_maximum_requests() {
             counter = 0;
         }
         maximum[costumer][counter] = resource_amount;
+        counter++;
+    }
+    fclose(fp);
+}
+
+void get_initial_allocation() {
+    FILE *fp;
+    int resource_amount, counter = 0, costumer = 0;
+    char* filename = ALLOCATION_FILE;
+ 
+    fp = fopen(filename, "r");
+
+    if (fp == NULL){
+        printf("Could not open file %s", filename);
+    }
+
+    while (fscanf(fp, " %d", &resource_amount) == 1) {
+        if (counter == NUMBER_OF_RESOURCES) {
+            costumer++;
+            counter = 0;
+        }
+        allocation[costumer][counter] = resource_amount;
         counter++;
     }
     fclose(fp);
